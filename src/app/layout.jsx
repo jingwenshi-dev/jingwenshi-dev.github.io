@@ -1,4 +1,5 @@
 import '@styles/globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import NavBar from '@components/NavBar';
 
 export const metadata = {
@@ -13,6 +14,7 @@ const RootLayout = ({ children }) => {
         <main className={"app"}>
           <NavBar />
           {children}
+          <Analytics />
         </main>
       </body>
     </html>
