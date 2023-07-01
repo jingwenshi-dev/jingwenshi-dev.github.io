@@ -1,5 +1,6 @@
 import '@styles/globals.css';
-import TestButton from "@components/TestButton";
+import NavBar from '@components/NavBar';
+
 export const metadata = {
   title: "Jingwen Shi's Portfolio",
   description: "Discover Jingwen Shi's projects."
@@ -10,7 +11,7 @@ const RootLayout = ({ children }) => {
     <html lang={"en"}>
       <body>
         <main className={"app"}>
-          <TestButton/>
+          <NavBar />
           {children}
         </main>
       </body>
