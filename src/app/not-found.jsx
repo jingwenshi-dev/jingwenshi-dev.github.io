@@ -12,7 +12,7 @@ export default function NotFound() {
     <Empty
       image={<IllustrationNotFound style={{ width: 150, height: 150 }} />}
       darkModeImage={<IllustrationNotFoundDark style={{ width: 150, height: 150 }} />}
-      description={'Page 404'}
+      description={"Ooops! You weren't supposed to see this."}
       style={emptyStyle}
     />
   )
