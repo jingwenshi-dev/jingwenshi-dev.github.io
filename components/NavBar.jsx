@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Nav } from '@douyinfe/semi-ui';
+import { IconHome, IconCode, IconMail } from '@douyinfe/semi-icons';
 
 const NavBar = () => {
   return (
@@ -9,7 +10,7 @@ const NavBar = () => {
       renderWrapper = {({ itemElement, isSubNav, isInSubNav, props }) => {
         const routerMap = {
           Home: "/",
-          About: "/about",
+          Projects: "/projects",
           ContactMe: "/contact",
         };
 
@@ -21,9 +22,9 @@ const NavBar = () => {
       }}
 
       items={[
-        { itemKey: "Home", text: "Home" },
-        { itemKey: "About", text: "About" },
-        { itemKey: "ContactMe", text: "Contact Me" }
+        { itemKey: "Home", text: "Home", icon: <IconHome  /> },
+        { itemKey: "Projects", text: "Projects", icon: <IconCode /> },
+        { itemKey: "ContactMe", text: "Contact Me", icon: <IconMail /> }
       ]}
     ></Nav>
   );
