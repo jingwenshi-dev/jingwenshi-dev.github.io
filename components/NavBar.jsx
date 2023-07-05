@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import {Button, Nav} from '@douyinfe/semi-ui';
+import {Button, Nav, Tooltip} from '@douyinfe/semi-ui';
 import { IconHome, IconCode, IconMail, IconSemiLogo, IconSun, IconMoon } from '@douyinfe/semi-icons';
 import {useState} from "react";
 
@@ -21,19 +21,32 @@ function DarkMode() {
   };
 
   return (
-    <Button icon={isDark ? <IconSun /> : <IconMoon />} onClick={switchMode}>
-    </Button>
+    <Tooltip content={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+      <span>
+        <Button
+
+          theme='borderless'
+          size='large'
+
+          icon={isDark ? <IconSun size="extra-large" /> : <IconMoon size="extra-large" />}
+          onClick={switchMode}
+
+        ></Button>
+      </span>
+    </Tooltip>
   );
 }
 
 const NavBar = () => {
   return (
     <Nav
+
       renderWrapper = {({ itemElement, isSubNav, isInSubNav, props }) => {
         const routerMap = {
           Home: "/",
           Projects: "/projects",
           ContactMe: "/contact",
+          Resume: "/resume"
         };
 
         return (
@@ -46,14 +59,15 @@ const NavBar = () => {
       mode={'horizontal'}
 
       header={{
-        logo: <IconSemiLogo style={{ height: '36px', fontSize: 36 }} />,
+        logo: <IconSemiLogo style={{ fontSize: 36 }} />,
         text: 'JS'
       }}
 
       items={[
-        { itemKey: "Home", text: "Home", icon: <IconHome  /> },
+        { itemKey: "Home", text: "Home", icon: <IconHome /> },
         { itemKey: "Projects", text: "Projects", icon: <IconCode /> },
-        { itemKey: "ContactMe", text: "Contact Me", icon: <IconMail /> }
+        { itemKey: "ContactMe", text: "Contact Me", icon: <IconMail /> },
+        { itemKey: "Resume", text: "Resume", icon: <IconMail />}
       ]}
 
       footer={
