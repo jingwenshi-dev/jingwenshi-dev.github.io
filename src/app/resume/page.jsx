@@ -1,6 +1,13 @@
+'use client';
+import {useState} from "react";
+
 const Resume = () => {
+  const [resumeLink] = useState("https://drive.google.com/file/d/1PzMmBWdUk17_Wrxlh2SXnJnY_TPzpJw8/preview")
   return (
-    <a href="https://drive.google.com/drive/folders/11nNIfoCpE9rI0--NEH0FAFpW8JVpG3ys?usp=drive_link">Resume</a>
+    <div style={{height: '85vh'}}>
+      <h1>CS Resume</h1>
+      <iframe src={resumeLink} width="100%" height="100%" allow="autoplay"></iframe>
+    </div>
   );
 };
 
