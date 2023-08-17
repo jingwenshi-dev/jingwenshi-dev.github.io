@@ -2,7 +2,7 @@
 import {useState} from "react";
 
 const Resume = () => {
-  const [resumeLink] = useState("https://drive.google.com/file/d/1PzMmBWdUk17_Wrxlh2SXnJnY_TPzpJw8/preview")
+  const [resumeLink] = useState("https://drive.google.com/file/d/1DQCcBD9dfGE0En9sz-wQUtwZz-Ee-kdr/preview")
   return (
     <div style={{height: '85vh'}}>
       <h1>CS Resume</h1>
