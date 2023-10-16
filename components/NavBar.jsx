@@ -65,9 +65,9 @@ const NavBar = () => {
 
       items={[
         { itemKey: "Home", text: "Home", icon: <IconHome /> },
+        { itemKey: "Resume", text: "Resume", icon: <IconMail />},
         { itemKey: "Projects", text: "Projects", icon: <IconCode /> },
-        { itemKey: "ContactMe", text: "Contact Me", icon: <IconMail /> },
-        { itemKey: "Resume", text: "Resume", icon: <IconMail />}
+        { itemKey: "ContactMe", text: "Contact Me", icon: <IconMail /> }
       ]}
 
       footer={
