@@ -1,4 +1,5 @@
 'use client';
+// Has to use client, or error will occur
 
 import React from "react";
 import { AnimatePresence, motion } from 'framer-motion';

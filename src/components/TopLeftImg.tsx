@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 const TopLeftImg = () => {
   return (
     <div className={'absolute left-0 top-0 mix-blend-color-dodge w-[200px] z-10 xl:w-[400px] opacity-50'}>

@@ -1,7 +1,10 @@
 'use client'
 
-// icons
-import {
+import React, { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button, Tooltip } from '@nextui-org/react'
+import { // icons
   HiHome,
   HiUser,
   HiViewColumns,
@@ -10,13 +13,6 @@ import {
   HiEnvelope,
 } from 'react-icons/hi2';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-import {Button, Tooltip} from '@nextui-org/react'
-import React, { useState } from "react";
-
-// nav data
 export const navData = [
   { name: 'Home', path: '/', icon: <HiHome /> },
   { name: 'About', path: '/about', icon: <HiUser /> },
@@ -37,6 +33,8 @@ const NavBar = () => {
           return (
             <Link className={`${link.path === pathname} relative flex items-center group`} href={link.path} key={index}>
               <Tooltip showArrow={true} content={link.name} placement={'right-end'} color={'primary'}>
+
+                {/* NextUI with variant="ghost" (i.e. transparent bg) will have a white border => use tailwind instead => lost hover transition effect => useState */}
                 <Button isIconOnly radius="full" className={'bg-transparent'}
                         onMouseEnter={() => setHover(prevHover => {
                           const newHover = [...prevHover];
