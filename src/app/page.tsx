@@ -4,6 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { Button } from '@nextui-org/react'
 import { motion } from 'framer-motion';
 import { fadeIn } from "../../variants";
+import Avatar from "../components/Avatar";
 
 const Home = () => {
   return (
@@ -45,6 +46,12 @@ const Home = () => {
             </Button>
           </motion.div>
         </div>
+      </div>
+      <div className={'w-[1200px] h-full absolute right-0 bottom-0'}>
+        {/*<div className={'bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0'}></div>*/}
+        <motion.div variants={fadeIn('up', 0.3)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'w-full h-full max-w-[650px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[14%]'}>
+          <Avatar/>
+        </motion.div>
       </div>
     </div>
   );
