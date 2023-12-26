@@ -19,11 +19,11 @@ const Header = () => {
     return (
       <header className={'absolute z-30 w-full flex items-center px-16 xl:px-0 xl:h-[90px]'}>
         <motion.div variants={fadeIn('left', 0.3)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'container mx-auto'}>
-          <div className={'flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8'}>
+          <div className={'flex flex-col lg:flex-row justify-between items-center gap-y-1 py-6'}>
             <Link href={'/'} className="text-2xl">
               <b>Jingwen</b>&nbsp;Shi
             </Link>
-            <div>
+            <div className={'flex items-center gap-x-5 text-lg'}>
               {headerData.map((link, index) => {
                 return (
                   <Link href={link.path} key={link.name} rel="noopener noreferrer" target="_blank">
@@ -41,7 +41,7 @@ const Header = () => {
                         })}
                       >
                         {React.cloneElement(link.icon, {
-                          size: "1.75em",
+                          className: 'sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl', // Add responsive classes here
                           color: hover[index] ? '#F13024' : 'white',
                           style: { transition: 'color 0.25s ease-in-out' }
                         })}
