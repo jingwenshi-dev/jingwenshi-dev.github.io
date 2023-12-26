@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className={'h-full'}>
       <div className={'w-full h-full bg-gradient-to-r'}>
-        <div className={'text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto'}>
+        <div className={'text-center flex flex-col justify-center pt-36 md:pt-44 lg:pt-50 xl:pt-60 xl:text-left h-full container mx-auto'}>
           <motion.h1 variants={fadeIn('down', 0.2)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'h1'}>
             <span className={'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'}>
               Hello, I&apos;m {" "}
