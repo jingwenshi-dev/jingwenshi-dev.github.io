@@ -32,7 +32,7 @@ const NavBar = () => {
         {navData.map((link, index) => {
           return (
             <Link className={`${link.path === pathname} relative flex items-center group`} href={link.path} key={index}>
-              <Tooltip showArrow={true} content={link.name} placement={'right-end'} color={'primary'}>
+              <Tooltip showArrow={true} content={link.name} placement={'right'} color={'primary'}>
 
                 {/* NextUI with variant="ghost" (i.e. transparent bg) will have a white border => use tailwind instead => lost hover transition effect => useState */}
                 <Button isIconOnly radius="full" className={'bg-transparent'}
