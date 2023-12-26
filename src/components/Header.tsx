@@ -1,9 +1,10 @@
 'use client'
+import React, {useState} from "react";
 import Link from 'next/link';
 import {RiInstagramLine, RiGithubLine, RiTwitterLine, RiLinkedinLine} from "react-icons/ri";
 import { Button, Tooltip } from '@nextui-org/react'
-import React, {useState} from "react";
-import {navData} from "@/components/NavBar";
+import { motion } from 'framer-motion';
+import {fadeIn} from "../../variants";
 
 export const headerData = [
   { name: 'Instagram', path: 'https://www.instagram.com/_steven_shi_/', icon: <RiInstagramLine /> },
@@ -13,11 +14,11 @@ export const headerData = [
 ];
 
 const Header = () => {
-  const [hover, setHover] = useState(new Array(navData.length).fill(false));
+  const [hover, setHover] = useState(new Array(headerData.length).fill(false));
 
     return (
       <header className={'absolute z-30 w-full flex items-center px-16 xl:px-0 xl:h-[90px]'}>
-        <div className={'container mx-auto'}>
+        <motion.div variants={fadeIn('left', 0.3)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'container mx-auto'}>
           <div className={'flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8'}>
             <Link href={'/'} className="text-2xl">
               <b>Jingwen</b>&nbsp;Shi
@@ -51,7 +52,7 @@ const Header = () => {
               })}
             </div>
           </div>
-        </div>
+        </motion.div>
       </header>
     );
 };
