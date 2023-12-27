@@ -16,7 +16,7 @@ const Header = () => {
   const [hover, setHover] = useState(new Array(headerData.length).fill(false));
 
     return (
-      <header className={'absolute z-0 w-full flex items-center px-16 xl:px-0 xl:h-[90px]'}>
+      <header className={'absolute z-10 w-full flex items-center px-16 xl:px-0 xl:h-[90px]'}>
         <motion.div variants={fadeIn('left', 0.3)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'container mx-auto'}>
           <div className={'flex flex-col lg:flex-row justify-between items-center gap-y-1 py-6'}>
             <Link href={'/'} className="text-2xl text-white">
