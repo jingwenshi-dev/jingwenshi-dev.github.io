@@ -3,6 +3,15 @@ import { Button, Input, Textarea } from "@nextui-org/react";
 import {BsArrowRight} from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../variants";
+import confetti from 'canvas-confetti';
+
+const handleConfetti = () => {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
 
 const contact = () => {
     return (
@@ -29,7 +38,7 @@ const contact = () => {
               </div>
               <Input isRequired type={"text"} label={"Subject"} variant={"underlined"}/>
               <Textarea isRequired minRows={5} maxRows={15} label={"Message"} variant={"underlined"}/>
-              <Button radius={'full'} variant={"ghost"} className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
+              <Button radius={'full'} variant={"ghost"} onClick={handleConfetti} className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
                 <span className={'group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'}>
                   Send Message
                 </span>
