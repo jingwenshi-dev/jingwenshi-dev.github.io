@@ -38,7 +38,7 @@ const Home = () => {
             I am interested in Cloud Computing, Distributed Systems, Parallel Computer Architecture and Programming,
             CAD, FPGA and so on.
           </motion.p>
-          <motion.div variants={fadeIn('down', 0.4)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'flex flex-row justify-center xl:justify-start z-50'}>
+          <motion.div variants={fadeIn('down', 0.4)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'flex flex-row justify-center xl:justify-start z-40'}>
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Link href={'/contact'}>
               <Button radius="full" className={'mr-4 text-white bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500'} variant={'shadow'}>
