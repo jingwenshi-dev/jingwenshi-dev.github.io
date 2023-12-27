@@ -5,6 +5,7 @@ import { Button } from '@nextui-org/react'
 import { motion } from 'framer-motion';
 import { fadeIn } from "../../variants";
 import Avatar from "../components/Avatar";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -38,9 +39,12 @@ const Home = () => {
             CAD, FPGA and so on.
           </motion.p>
           <motion.div variants={fadeIn('down', 0.4)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'flex flex-row justify-center xl:justify-start'}>
-            <Button radius="full" className={'mr-4 text-white bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500'} variant={'shadow'}>
-              Hire Me
-            </Button>
+            {/* eslint-disable-next-line react/jsx-no-undef */}
+            <Link href={'/contact'}>
+              <Button radius="full" className={'mr-4 text-white bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500'} variant={'shadow'}>
+                Hire Me
+              </Button>
+            </Link>
             <Button radius="full" className={'mr-4 text-white'} variant={'bordered'}>
               Download CV
             </Button>
