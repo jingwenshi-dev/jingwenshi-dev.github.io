@@ -2,7 +2,6 @@
 import React, {useRef} from 'react';
 import {Button, Input, Textarea} from "@nextui-org/react";
 import { FaRegPaperPlane } from "react-icons/fa6";
-
 import {motion} from "framer-motion";
 import {fadeIn} from "../../../variants";
 import confetti from "canvas-confetti";
@@ -13,16 +12,28 @@ const Contact = () => {
   const subjectRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
-  const onSubmit = (e: any) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault();
     const name = nameRef.current ? nameRef.current.value : '';
     const email = emailRef.current ? emailRef.current.value : '';
     const subject = subjectRef.current ? subjectRef.current.value : '';
     const message = messageRef.current ? messageRef.current.value : '';
+    const requiredFields = {name, email, subject, message};
 
-    console.log(name, email, subject, message);
-    // Add your submit logic here
+    // Send contact form
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', Accept: 'application/json'},
+      body: JSON.stringify(requiredFields)
+    });
+    console.log("Response Status Code: " + response.status)
+    console.log("Response Body: " + (response.body ? response.body.message : 'No response message'));
 
+    if (response.status !== 200) {
+      throw new Error(await response.text());
+    }
+
+    // Confetti animation
     confetti({
       particleCount: 100,
       spread: 70,
