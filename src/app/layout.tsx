@@ -30,7 +30,7 @@ const RootLayout = ({children}: { children: React.ReactNode }) => {
             <NavBar/>
             <Header/>
             <PageTransition/>
-            <main className={'app'}>
+            <main className={'app dark'}>
               {/* Bug: Exit animation is not working in Next JS 13/14, it seems to have a workaround but has not been successful for now */}
               {children}
             </main>
