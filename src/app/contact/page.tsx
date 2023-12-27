@@ -27,7 +27,8 @@ const Contact = () => {
       body: JSON.stringify(requiredFields)
     });
     console.log("Response Status Code: " + response.status)
-    console.log("Response Body: " + (response.body ? response.body.message : 'No response message'));
+    const responseBody = await response.json();
+    console.log("Response Body: " + (responseBody.message ? responseBody.message : 'No response message'));
 
     if (response.status !== 200) {
       throw new Error(await response.text());
