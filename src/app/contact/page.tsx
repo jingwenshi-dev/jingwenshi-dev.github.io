@@ -1,7 +1,8 @@
 'use client';
 import React, {useRef} from 'react';
 import {Button, Input, Textarea} from "@nextui-org/react";
-import {BsArrowRight} from "react-icons/bs";
+import { FaRegPaperPlane } from "react-icons/fa6";
+
 import {motion} from "framer-motion";
 import {fadeIn} from "../../../variants";
 import confetti from "canvas-confetti";
@@ -59,7 +60,7 @@ const Contact = () => {
                   <span className={'group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'}>
                     Send Message
                   </span>
-              <BsArrowRight
+              <FaRegPaperPlane
                 className={'-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]'}/>
             </Button>
           </motion.form>
