@@ -76,9 +76,9 @@ const Contact = () => {
             </div>
             <Input isRequired type={"text"} label={"Subject"} variant={"underlined"} ref={subjectRef}/>
             <Textarea isRequired minRows={5} maxRows={15} label={"Message"} variant={"underlined"} ref={messageRef}/>
-            <Button radius={'full'} variant={"ghost"} onClick={onSubmit} isLoading={false} className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
+            <Button radius={'full'} variant={"ghost"} onClick={onSubmit} isLoading={isLoading} className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
               <span className={'group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'}>
-                {isLoading ? 'Sending Message' : 'Send Message'}
+                {isLoading ? 'Sending...' : 'Send Message'}
               </span>
               <FaRegPaperPlane className={'-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]'}/>
             </Button>
