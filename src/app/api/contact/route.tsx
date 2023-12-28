@@ -6,8 +6,21 @@ export async function POST(request: NextRequest) {
     let {name, email, subject, message} = await request.json();
     message = message.replace(/\n/g, '<br>'); // Replace newlines with <br> tags to preserve the formatting of the user input
 
-    if (!name || !email || !subject || !message) {
-      return NextResponse.json({message: "Invalid request"}, {status: 400});
+    let missingFields = {name: false, email: false, subject: false, message: false};
+    if (!name) {
+      missingFields.name = true;
+    }
+    if (!email) {
+      missingFields.email = true;
+    }
+    if (!subject) {
+      missingFields.subject = true;
+    }
+    if (!message) {
+      missingFields.message = true;
+    }
+    if (Object.values(missingFields).some(value => value)) {
+      return NextResponse.json(missingFields, {status: 400});
     }
 
     const transporter = nodemailer.createTransport({

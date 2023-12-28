@@ -1,5 +1,5 @@
 'use client';
-import React, {useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import {Button, Input, Textarea} from "@nextui-org/react";
 import { FaRegPaperPlane } from "react-icons/fa6";
 import {motion} from "framer-motion";
@@ -7,6 +7,8 @@ import {fadeIn} from "../../../variants";
 import confetti from "canvas-confetti";
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
@@ -14,6 +16,8 @@ const Contact = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
+    setIsLoading(true);
+
     const name = nameRef.current ? nameRef.current.value : '';
     const email = emailRef.current ? emailRef.current.value : '';
     const subject = subjectRef.current ? subjectRef.current.value : '';
@@ -26,20 +30,25 @@ const Contact = () => {
       headers: {'Content-Type': 'application/json', Accept: 'application/json'},
       body: JSON.stringify(requiredFields)
     });
-    console.log("Response Status Code: " + response.status)
+
     const responseBody = await response.json();
+    console.log("Response Status Code: " + response.status)
     console.log("Response Body: " + (responseBody.message ? responseBody.message : 'No response message'));
 
-    if (response.status !== 200) {
-      throw new Error(await response.text());
+    setIsLoading(false);
+    if (response.status === 200) {
+      // Confetti animation
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: {y: 0.6}
+      });
     }
-
-    // Confetti animation
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: {y: 0.6}
-    });
+    else {
+      // responseBody will be like {name: false, email: false, subject: false, message: false}, display all ones that true
+      const missingFields = Object.keys(responseBody).filter(key => responseBody[key]);
+      alert(`Please fill out the following fields: ${missingFields.join(', ')}`);
+    }
   };
 
   return (
@@ -67,13 +76,11 @@ const Contact = () => {
             </div>
             <Input isRequired type={"text"} label={"Subject"} variant={"underlined"} ref={subjectRef}/>
             <Textarea isRequired minRows={5} maxRows={15} label={"Message"} variant={"underlined"} ref={messageRef}/>
-            <Button radius={'full'} variant={"ghost"} onClick={onSubmit}
-                    className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
-                  <span className={'group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'}>
-                    Send Message
-                  </span>
-              <FaRegPaperPlane
-                className={'-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]'}/>
+            <Button radius={'full'} variant={"ghost"} onClick={onSubmit} isLoading={false} className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
+              <span className={'group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'}>
+                {isLoading ? 'Sending Message' : 'Send Message'}
+              </span>
+              <FaRegPaperPlane className={'-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]'}/>
             </Button>
           </motion.form>
         </div>
