@@ -7,6 +7,7 @@ import {fadeIn} from "../../../variants";
 import confetti from "canvas-confetti";
 
 const Contact = () => {
+  const [missingFields, setMissingFields] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
@@ -43,11 +44,9 @@ const Contact = () => {
         spread: 70,
         origin: {y: 0.6}
       });
-    }
-    else {
-      // responseBody will be like {name: false, email: false, subject: false, message: false}, display all ones that true
-      const missingFields = Object.keys(responseBody).filter(key => responseBody[key]);
-      alert(`Please fill out the following fields: ${missingFields.join(', ')}`);
+    } else {
+      const fields = Object.keys(responseBody).filter(key => responseBody[key]);
+      setMissingFields(fields);
     }
   };
 
@@ -76,12 +75,20 @@ const Contact = () => {
             </div>
             <Input isRequired type={"text"} label={"Subject"} variant={"underlined"} ref={subjectRef}/>
             <Textarea isRequired minRows={5} maxRows={15} label={"Message"} variant={"underlined"} ref={messageRef}/>
-            <Button radius={'full'} variant={"ghost"} onClick={onSubmit} isLoading={isLoading} className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
-              <span className={'group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'}>
-                {isLoading ? 'Sending...' : 'Send Message'}
-              </span>
-              <FaRegPaperPlane className={'-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]'}/>
-            </Button>
+
+            <div className={'flex gap-x-6 w-full'}>
+              <Button radius={'full'} variant={"ghost"} onClick={onSubmit} isLoading={isLoading} className={'max-w-[170px] flex items-center justify-center overflow-hidden'}>
+                <span className={'group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'}>
+                  {isLoading ? 'Sending...' : 'Send Message'}
+                </span>
+                <FaRegPaperPlane className={'-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]'}/>
+              </Button>
+              <div className={'flex-1 flex items-center justify-end'}>
+                {missingFields.length > 0 && (
+                  <span className={'text-white'}>Missing Field{missingFields.length > 1 ? 's' : ''}: {missingFields.join(', ')}</span>
+                )}
+              </div>
+            </div>
           </motion.form>
         </div>
       </div>
