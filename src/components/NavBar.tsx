@@ -7,18 +7,14 @@ import { Button, Tooltip } from '@nextui-org/react'
 import { // icons
   HiHome,
   HiUser,
-  HiViewColumns,
   HiRectangleGroup,
-  HiChatBubbleBottomCenterText,
   HiEnvelope,
 } from 'react-icons/hi2';
 
 export const navData = [
   { name: 'Home', path: '/', icon: <HiHome /> },
   { name: 'About', path: '/about', icon: <HiUser /> },
-  { name: 'Services', path: '/services', icon: <HiRectangleGroup /> },
-  { name: 'Work', path: '/work', icon: <HiViewColumns /> },
-  { name: 'Testimonials', path: '/testimonials', icon: <HiChatBubbleBottomCenterText /> },
+  { name: 'Projects', path: '/projects', icon: <HiRectangleGroup /> },
   { name: 'Contact', path: '/contact', icon: <HiEnvelope /> }
 ];
 

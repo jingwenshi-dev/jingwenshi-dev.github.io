@@ -45,9 +45,11 @@ const Home = () => {
                 Hire Me
               </Button>
             </Link>
-            <Button radius="full" className={'mr-4 text-white'} variant={'bordered'}>
-              Download CV
-            </Button>
+            <a href="/Jingwen Shi CV.pdf" download>
+              <Button radius="full" className={'mr-4 text-white'} variant={'bordered'}>
+                Download CV
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>
