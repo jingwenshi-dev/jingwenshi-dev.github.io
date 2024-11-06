@@ -13,8 +13,8 @@ import { // icons
 
 export const navData = [
   { name: 'Home', path: '/', icon: <HiHome /> },
-  { name: 'About', path: '/about', icon: <HiUser /> },
-  { name: 'Projects', path: '/projects', icon: <HiRectangleGroup /> },
+  // { name: 'About', path: '/about', icon: <HiUser /> },
+  // { name: 'Projects', path: '/projects', icon: <HiRectangleGroup /> },
   { name: 'Contact', path: '/contact', icon: <HiEnvelope /> }
 ];
 
