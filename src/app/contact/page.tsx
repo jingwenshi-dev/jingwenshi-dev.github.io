@@ -7,23 +7,42 @@ import {fadeIn} from "../../../variants";
 import confetti from "canvas-confetti";
 
 const Contact = () => {
-  const [missingFields, setMissingFields] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
   const onSubmit = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
+    setErrorMessage('');
 
     const name = nameRef.current ? nameRef.current.value : '';
     const email = emailRef.current ? emailRef.current.value : '';
     const subject = subjectRef.current ? subjectRef.current.value : '';
     const message = messageRef.current ? messageRef.current.value : '';
     const requiredFields = {name, email, subject, message};
+
+    const missing = Object.keys(requiredFields).filter(key => !requiredFields[key as keyof typeof requiredFields]);
+    if (missing.length > 0) {
+      setErrorMessage('Please fill in all fields.');
+      setIsLoading(false);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage('Please enter a valid email address.');
+      setIsLoading(false);
+      return;
+    }
 
     // Send contact form
     const response = await fetch('/api/contact', {
@@ -45,9 +64,7 @@ const Contact = () => {
         origin: {y: 0.6}
       });
     } else {
-      const fields = Object.keys(responseBody).filter(key => responseBody[key]);
-      setMissingFields(fields);
-    }
+      setErrorMessage('An error occurred. Please try again later.');}
   };
 
   return (
@@ -84,8 +101,8 @@ const Contact = () => {
                 <FaRegPaperPlane className={'-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]'}/>
               </Button>
               <div className={'flex-1 flex items-center justify-end'}>
-                {missingFields.length > 0 && (
-                  <span className={'text-white'}>Missing Field{missingFields.length > 1 ? 's' : ''}: {missingFields.join(', ')}</span>
+                {errorMessage && (
+                  <span className={'text-white'}>{errorMessage}</span>
                 )}
               </div>
             </div>

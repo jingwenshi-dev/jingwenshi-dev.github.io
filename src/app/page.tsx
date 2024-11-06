@@ -34,7 +34,7 @@ const Home = () => {
           <motion.p variants={fadeIn('down', 0.3)} initial={'hidden'} animate={'show'} exit={'hidden'} className={'max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16'}>
             I graduated from the University of Toronto, double majoring in Computer Science and Applied Statistics.
             <br/><br/>
-            Currently, I am pursuing a project based Master's degree (with co-op) in Computer and Software Engineering at the McMaster University.
+            Currently, I am pursuing a project based Master&apos;s degree (with co-op) in Computer and Software Engineering at the McMaster University.
             <br/><br/>
             I am interested in Cloud Computing, Distributed Systems, Parallel Computer Architecture and Programming and so on.
           </motion.p>
