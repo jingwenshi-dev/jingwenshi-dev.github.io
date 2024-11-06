@@ -45,7 +45,7 @@ const Home = () => {
                 Hire Me
               </Button>
             </Link>
-            <a href="/Jingwen Shi CV.pdf" download>
+            <a href="https://drive.google.com/drive/folders/1IN_XPy2ToVCD5Adz0qpsZKsw5-BJz2ry?usp=share_link" target="_blank" rel="noopener noreferrer">
               <Button radius="full" className={'mr-4 text-white'} variant={'bordered'}>
                 Download CV
               </Button>
